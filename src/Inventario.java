@@ -19,21 +19,21 @@ public class Inventario {
     }
 
     public void agregarProducto(int codigo, String nombre, int cantidad) {
-        nodoBinario nodoInicial = nodoInicial();
-        nodoInicial.insertar(codigo, cantidad, nombre, nodoInicial);
-        archivos.agregarProducto(codigo, nombre, cantidad);
+        if (!buscarProducto(codigo, false)) {
+            raiz = raiz.insertar(codigo, cantidad, nombre, raiz);
+            archivos.agregarProducto(codigo, nombre, cantidad);
+        } else {
+            System.out.println("El producto con código " + codigo + " ya está en el inventario.");
+        }
     }
 
     public void eliminarProducto(int codigo) {
-        nodoBinario nodoInicial = nodoInicial();
-        nodoInicial = nodoBinario.eliminar(nodoInicial, codigo);
-        archivos.eliminarProducto(codigo);
 
     }
-
-    public void buscarProducto(int codigo) {
-        nodoBinario nodoInicial = nodoInicial();
-
+    
+    public boolean buscarProducto(int codigo, boolean mostrarInfo) {
+        // return raiz.buscarNodo(codigo, raiz, mostrarInfo);
+        return raiz != null && raiz.buscarNodo(codigo, raiz, mostrarInfo);
     }
 
     public void actualizarCantidad(int codigo, int cantidad) {

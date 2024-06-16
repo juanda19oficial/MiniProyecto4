@@ -22,12 +22,21 @@ public class App {
                         // Agregar producto al inventario
                         System.out.println("Ingrese el código del producto: ");
                         int codigo = scanner.nextInt();
-                        System.out.println("Ingrese el nombre del producto: ");
-                        scanner.nextLine();
-                        String nombre = scanner.next();
-                        System.out.println("Ingrese la cantidad: ");
-                        int cantidad = scanner.nextInt();
-                        inventario.agregarProducto(codigo, nombre, cantidad);
+                        if (inventario.buscarProducto(codigo, false)) {
+                            System.out.println("El producto con el código " + codigo + " ya se encuentra agregado.");
+                        } else {
+                            System.out.println("Ingrese el nombre del producto: ");
+                            scanner.nextLine();
+                            String nombre = scanner.nextLine();
+                            System.out.println("Ingrese la cantidad: ");
+                            int cantidad = scanner.nextInt();
+                            if (cantidad <= 0) {
+                                System.out.println("Por favor ingrese una cantidad válida");
+                            } else {
+                                inventario.agregarProducto(codigo, nombre, cantidad);
+                                System.out.println("Producto agregado correctamente.");
+                            }
+                        }
                         break;
                     case 2:
                         break;

@@ -7,12 +7,11 @@ import java.io.IOException;
 
 public class manejoArchivos {
 
-
     public void agregarProducto(int codigo, String nombre, int cantidad) {
         File archivo = new File("files/inventario.txt");
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(archivo, true));
-            writer.write("\r"+codigo + "," + nombre + "," + cantidad);
+            writer.write("\r" + codigo + "," + cantidad + "," + nombre);
             writer.newLine();
             writer.close();
         } catch (IOException e) {
