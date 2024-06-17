@@ -25,16 +25,21 @@ public class nodoBinario {
         return nodo;
     }
 
+    int contadorImpresion = 0;
     public boolean buscarNodo(int codigo, nodoBinario nodo, boolean mostrarInfo) {
         if (nodo == null) {
             return false;
         } else if (codigo == nodo.codigo) {
             if (mostrarInfo) {
-                System.out.println("EL PRODUCTO ES: ");
-                System.out.println("CODIGO: " + nodo.codigo);
-                System.out.println("CANTIDAD: " + nodo.cantidad);
-                System.out.println("NOMBRE: " + nodo.nombre);
-                System.out.println("\n");
+                contadorImpresion++;
+                if(contadorImpresion == 1){
+                    System.out.println("\n=================");
+                    System.out.println("EL PRODUCTO ES: ");
+                    System.out.println("CODIGO: " + nodo.codigo);
+                    System.out.println("CANTIDAD: " + nodo.cantidad);
+                    System.out.println("NOMBRE: " + nodo.nombre);
+                    System.out.println("\n");
+                }
             }
             return true;
         } else if (codigo > nodo.codigo) {

@@ -42,8 +42,8 @@ public class Inventario {
     }
 
     public void mostrarInventario() {
-        nodoBinario nodoInicial = nodoInicial();
-
+        manejoArchivos manageFile = new manejoArchivos();
+        manageFile.mostrarInventario();
     }
 
 }
