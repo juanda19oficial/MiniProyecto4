@@ -12,7 +12,7 @@ public class nodoBinario {
     }
 
     public nodoBinario() {
-    };
+    }
 
     public nodoBinario insertar(int nuevoCodigo, int nuevaCant, String nuevoNombre, nodoBinario nodo) {
         if (nodo == null) {
@@ -32,7 +32,7 @@ public class nodoBinario {
         } else if (codigo == nodo.codigo) {
             if (mostrarInfo) {
                 contadorImpresion++;
-                if(contadorImpresion == 1){
+                if (contadorImpresion == 1) {
                     System.out.println("\n=================");
                     System.out.println("EL PRODUCTO ES: ");
                     System.out.println("CODIGO: " + nodo.codigo);
@@ -59,6 +59,9 @@ public class nodoBinario {
     }
 
     public static nodoBinario eliminar(nodoBinario nodo, int numero) {
+        if (nodo == null) {
+            return null;
+        } 
         if (numero > nodo.codigo) {
             nodo.right = eliminar(nodo.right, numero);
         } else if (numero < nodo.codigo) {
@@ -71,8 +74,20 @@ public class nodoBinario {
             }
             nodo.codigo = minValue(nodo.right);
             nodo.right = eliminar(nodo.right, nodo.codigo);
-
         }
         return nodo;
+    }
+
+    public void actualizarCantidad(int codigo, int cantidad, nodoBinario nodo) {
+        if (nodo == null) {
+            return;
+        }
+        if (codigo == nodo.codigo) {
+            nodo.cantidad = cantidad;
+        } else if (codigo > nodo.codigo) {
+            actualizarCantidad(codigo, cantidad, nodo.right);
+        } else {
+            actualizarCantidad(codigo, cantidad, nodo.left);
+        }
     }
 }

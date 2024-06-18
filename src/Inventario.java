@@ -1,7 +1,6 @@
 import filesManagament.manejoArchivos;
 
 public class Inventario {
-
     nodoBinario raiz;
     manejoArchivos archivos;
 
@@ -28,22 +27,32 @@ public class Inventario {
     }
 
     public void eliminarProducto(int codigo) {
-
+        if (buscarProducto(codigo, false)) {
+            raiz = nodoBinario.eliminar(raiz, codigo);
+            archivos.eliminarProducto(codigo);
+            System.out.println("Producto con codigo " + codigo + " fue eliminado correctamente");
+        } else {
+            System.out.println("Producto con codigo " + codigo + " no encontrado");
+        }
     }
-    
+
     public boolean buscarProducto(int codigo, boolean mostrarInfo) {
-        // return raiz.buscarNodo(codigo, raiz, mostrarInfo);
         return raiz != null && raiz.buscarNodo(codigo, raiz, mostrarInfo);
     }
 
     public void actualizarCantidad(int codigo, int cantidad) {
-        nodoBinario nodoInicial = nodoInicial();
-
+        if (buscarProducto(codigo, false)) {
+            raiz.actualizarCantidad(codigo, cantidad, raiz);
+            archivos.actualizarCantidad(codigo, cantidad);
+            System.out.println("Producto con codigo " + codigo + " fue actualizado correctamente");
+        } else {
+            System.out.println("Producto con codigo " + codigo + " no encontrado");
+        }
     }
 
     public void mostrarInventario() {
-        manejoArchivos manageFile = new manejoArchivos();
-        manageFile.mostrarInventario();
+        archivos.mostrarInventario();
     }
-
 }
+
+
