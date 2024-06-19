@@ -15,7 +15,7 @@ El proyecto contiene los siguientes archivos:
 
 ### Compilación
 
-Para compilar el proyecto, asegúrate de tener instalado JDK. Luego, abra su Visual Studio y ejecute el programa.
+Para compilar el proyecto, asegúrate de tener instalado JDK. Luego, abra la carpeta en su Visual Studio y ejecute el programa.
 
 ### Funcionalidades
 
